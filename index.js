@@ -6,10 +6,10 @@ const db = require('./db/db')
 
 const PORT = process.env.PORT || 4000;
 
-const userRoutes = require("./views/userRouters");
+const authRoutes = require("./views/authRoutes");
 
 
-app.use(userRoutes)
+app.use(authRoutes)
 
 db.then(() => {
     //Starting server
