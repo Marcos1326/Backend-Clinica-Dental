@@ -7,11 +7,11 @@ module.exports = {
      * Add seed commands here.
      *
      * Example:*/
-      await queryInterface.bulkInsert('Roles', [
-        {id:1,name: 'Admin'},
-        {id:2,name: 'Doctor'},
-        {id:3,name: 'Paciente'}
-    ], {});
+    await queryInterface.bulkInsert('Roles', [
+        {id:1,name:'Admin'},
+        {id:2,name:'Doctor'},
+        {id:3,name:'Paciente'}
+      ], {});
     
   },
 
