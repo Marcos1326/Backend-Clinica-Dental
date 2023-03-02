@@ -18,6 +18,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {
     sequelize,
     modelName: 'Role',
+    timestamps:false
+    //quita el updatedAt y el createdAt
   });
   return Role;
 };
