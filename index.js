@@ -4,8 +4,12 @@ app.use(express.json());
 
 const db = require('./db/db')
 
-
 const PORT = process.env.PORT || 4000;
+
+const userRoutes = require("./views/userRouters");
+
+
+app.use(userRoutes)
 
 db.then(() => {
     //Starting server
