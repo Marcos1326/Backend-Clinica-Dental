@@ -1,5 +1,5 @@
 const authControllers = {}
-const {User, Patient} = require("../models")
+const {User} = require("../models")
 const bcrypt = require('bcrypt');
 // const jwt = require('jsonwebtoken');
 
@@ -17,11 +17,8 @@ authControllers.create = async(req, res)=>{
             roles_id: 3
         })
 
-        const newPatient = await Patient.create({
-            user_id: newUser.id
-        })
 
-        return res.json(newUser, newPatient)
+        return res.json(newUser)
 
     } catch (error) {
         return res.status(500).send(error.message)
