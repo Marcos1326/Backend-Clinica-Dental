@@ -29,7 +29,7 @@ authControllers.login = async(req,res)=>{
     try {
         const { email, password } = req.body;
 
-        const user = await User.findOne({email: email});
+        const user = await User.findAll({email: email});
 
         if (!user) {
             return res.send('Wrong Credentials')
