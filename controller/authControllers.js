@@ -1,7 +1,7 @@
 const authControllers = {}
 const {User} = require("../models")
 const bcrypt = require('bcrypt');
-// const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 
 authControllers.create = async(req, res)=>{
     try {
@@ -25,6 +25,42 @@ authControllers.create = async(req, res)=>{
     }
 }
 
+authControllers.login = async(req,res)=>{
+    try {
+        const { email, password } = req.body;
 
+        const user = await User.findOne({email: email});
+
+        if (!user) {
+            return res.send('Wrong Credentials')
+        }
+
+        const isMatch = bcrypt.compareSync(password, user.password);
+
+        if (!isMatch) {
+            return res.send('Wrong Credentials password')
+        }
+
+        const token = jwt.sign(
+            {
+                userId: user.id,
+                email: user.email,
+                roleId: user.role_id
+            },
+            process.env.JWT_SECRET,
+            { expiresIn: '2h' }
+        );
+
+        return res.json(
+            {
+                success: true,
+                message: "Login successfully",
+                token: token
+            }
+        )
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
 
 module.exports = authControllers;
