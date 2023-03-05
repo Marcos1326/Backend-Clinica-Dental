@@ -1,6 +1,8 @@
 const appointmentController = {}
 const {Appointment} = require("../models")
 
+//Crear citas de Usuario
+
 appointmentController.newAppointment = async (req, res) => {
     try {
         const { hour,date } = req.body;
@@ -16,5 +18,36 @@ appointmentController.newAppointment = async (req, res) => {
         return res.status(500).send(error.message);
     }
 };
+
+//Modificar citas de Usuario
+
+appointmentController.updateAppointment = async (req, res) => {
+    try {
+        const { hour,date } = req.body;
+        const userId = req.userId;
+
+        const updateAppointments = await Appointment.update({
+            doctor_id:1,
+            // patient_id:4,
+            hour: hour,
+            date: date
+        },
+        {where:{id:userId}})
+
+        if(!updateAppointments){
+            return res.send("Appointment not updated")
+        }
+
+        return res.send("Appointment updated");
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+};
+
+// Ver citas de Usuario
+
+appointmentController.appointmens = async(req, res)=>{
+    
+}
 
 module.exports = appointmentController;
