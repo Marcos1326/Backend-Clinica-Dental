@@ -3,63 +3,56 @@ const {User} = require("../models")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
-authControllers.create = async(req, res)=>{
+authControllers.newUser = async (req, res) => {
     try {
-        const {name, surname, phone, email, password} = req.body;
-
+        const { name, surname, phone, email, password } = req.body;
         const encryptedPassword = bcrypt.hashSync(password, 10);
-        const newUser = await User.create ({
+        const user = {
             name: name,
             surname: surname,
             phone: phone,
             email: email,
             password: encryptedPassword,
             roles_id: 3
-        })
-
-
-        return res.json(newUser)
-
+        };
+        const users = await User.create(user);
+        return res.json(users);
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(error.message);
     }
-}
+};
 
-authControllers.login = async(req,res)=>{
+authControllers.login =async (req,res) => {
     try {
-        const { email, password } = req.body;
-
-        const user = await User.findAll({email: email});
-
+        
+        const { email, password, } = req.body;
+        const user = await User.findOne(
+            {
+            where: {
+            email: email,
+            },
+        }
+        );
         if (!user) {
-            return res.send('Wrong Credentials')
+            return res.send("Wrong User");
         }
-
         const isMatch = bcrypt.compareSync(password, user.password);
-
         if (!isMatch) {
-            return res.send('Wrong Credentials password')
+            return res.send("Wrong credentials");
         }
-
         const token = jwt.sign(
             {
-                userId: user.id,
-                email: user.email,
-                roleId: user.role_id
+            userId: user.id,
+            email: user.email,
+            roleId: user.role_id,
             },
-            process.env.JWT_SECRET,
-            { expiresIn: '2h' }
+            "secreto",
+            { expiresIn: "2h" }
         );
+        return res.json(token);
 
-        return res.json(
-            {
-                success: true,
-                message: "Login successfully",
-                token: token
-            }
-        )
     } catch (error) {
-        return res.status(500).send(error.message)
+        return res.status(500).send(error.message);
     }
 }
 
