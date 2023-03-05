@@ -1,15 +1,13 @@
 const express = require('express');
+require("dotenv").config();
+const db = require('./db/db');
+const router = require("./router")
 const app = express();
-app.use(express.json());
-
-const db = require('./db/db')
 
 const PORT = process.env.PORT || 4000;
 
-const authRoutes = require("./views/authRoutes");
-
-
-app.use(authRoutes)
+app.use(express.json());
+app.use(router)
 
 db.then(() => {
     //Starting server

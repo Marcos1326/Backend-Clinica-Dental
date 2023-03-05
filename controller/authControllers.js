@@ -1,7 +1,10 @@
 const authControllers = {}
-const {User} = require("../models")
+const {User, Patient} = require("../models")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+
+
+//Registro de Usuarios
 
 authControllers.newUser = async (req, res) => {
     try {
@@ -14,13 +17,16 @@ authControllers.newUser = async (req, res) => {
             email: email,
             password: encryptedPassword,
             roles_id: 3
-        };
+        }
         const users = await User.create(user);
+
         return res.json(users);
     } catch (error) {
         return res.status(500).send(error.message);
     }
 };
+
+//Login de Usuarios
 
 authControllers.login =async (req,res) => {
     try {
@@ -53,6 +59,48 @@ authControllers.login =async (req,res) => {
 
     } catch (error) {
         return res.status(500).send(error.message);
+    }
+}
+
+//Perfil de Usuario
+
+authControllers.profile = async(req, res)=>{
+    try {
+        const userId = req.userId;
+        const user = await User.findByPk(userId)
+
+        return res.json(user)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+//Cambiar datos Usuario
+
+authControllers.updateProfile = async(req, res)=>{
+    try {
+        const {name, surname, phone, email, password} = req.body;
+        const userId = req.userId;
+
+        const encryptedPassword = bcrypt.hashSync(password, 10);
+
+        const updateProfile = await User.update({
+            name,
+            surname,
+            phone,
+            email,
+            password: encryptedPassword
+        },
+        {where: {id:userId}})
+
+        if(!updateProfile){
+            return res.send("Profile not updated")
+        }
+
+        return res.send("Profile updated")
+
+    } catch (error) {
+        return res.status(500).send(error.message)
     }
 }
 
