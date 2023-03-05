@@ -1,5 +1,5 @@
 const authControllers = {}
-const {User, Patient} = require("../models")
+const {User} = require("../models")
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -103,5 +103,7 @@ authControllers.updateProfile = async(req, res)=>{
         return res.status(500).send(error.message)
     }
 }
+
+
 
 module.exports = authControllers;

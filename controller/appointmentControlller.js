@@ -1,17 +1,17 @@
 const appointmentController = {}
-const {appointment} = require("../models")
+const {Appointment} = require("../models")
 
 appointmentController.newAppointment = async (req, res) => {
     try {
         const { hour,date } = req.body;
         const user = {
-            // doctor_id:1,
-            // patient_id:5,
+            doctor_id:1,
+            // patient_id:4,
             hour: hour,
             date: date
         };
-        const users = await appointment.create(user);
-        return res.json(users);
+        const appointment = await Appointment.create(user);
+        return res.json(appointment);
     } catch (error) {
         return res.status(500).send(error.message);
     }
