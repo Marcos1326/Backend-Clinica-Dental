@@ -1,13 +1,12 @@
 const appointmentController = {}
 const {appointment} = require("../models")
-const jwt = require('jsonwebtoken');
 
 appointmentController.newAppointment = async (req, res) => {
     try {
-        const { doctor_id,patient_id,hour,date } = req.body;
+        const { hour,date } = req.body;
         const user = {
-            doctor_id:doctor_id,
-            patient_id:patient_id,
+            // doctor_id:1,
+            // patient_id:5,
             hour: hour,
             date: date
         };
@@ -18,4 +17,4 @@ appointmentController.newAppointment = async (req, res) => {
     }
 };
 
-module.exports = authControllers;
+module.exports = appointmentController;
