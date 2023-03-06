@@ -5,10 +5,7 @@ const {Appointment, Doctor} = require("../models")
 
 appointmentController.newAppointment = async (req, res) => {
     try {
-        // const userId = req.patient_id
-
-
-
+        
         const { hour,date } = req.body;
         const user = {
             doctor_id:req.body.doctor_id,
