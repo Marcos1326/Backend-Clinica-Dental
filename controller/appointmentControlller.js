@@ -1,14 +1,15 @@
 const appointmentController = {}
-const {Appointment} = require("../models")
+const {Appointment, User} = require("../models")
 
 //Crear citas de Usuario
 
 appointmentController.newAppointment = async (req, res) => {
     try {
+        const userId = req.patient_id
         const { hour,date } = req.body;
         const user = {
             doctor_id:1,
-            // patient_id:4,
+            patient_id: userId,
             hour: hour,
             date: date
         };
@@ -47,7 +48,13 @@ appointmentController.updateAppointment = async (req, res) => {
 // Ver citas de Usuario
 
 appointmentController.appointmens = async(req, res)=>{
-    
+    try {
+        const appointmens = await Appointment.findAll()
+
+        return res.json(appointmens)
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
 }
 
 module.exports = appointmentController;
