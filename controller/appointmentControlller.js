@@ -29,7 +29,6 @@ appointmentController.updateAppointment = async (req, res) => {
 
         const updateAppointments = await Appointment.update({
             doctor_id:1,
-            // patient_id:4,
             hour: hour,
             date: date
         },
