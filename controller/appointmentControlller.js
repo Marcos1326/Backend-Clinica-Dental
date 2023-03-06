@@ -1,11 +1,11 @@
 const appointmentController = {}
-const {Appointment, User} = require("../models")
+const {Appointment, Doctor} = require("../models")
 
 //Crear citas de Usuario
 
 appointmentController.newAppointment = async (req, res) => {
     try {
-        const userId = req.patient_id
+        // const userId = req.patient_id
 
 
 
@@ -68,6 +68,29 @@ appointmentController.deleteAppointmentById = async(req, res)=>{
         const deleteAppointment = await Appointment.destroy({where: {id: appointmentId}})
 
         return res.json(deleteAppointment);
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
+appointmentController.getAppointmentDoctor = async(req, res)=>{
+    try {
+
+        const userId = req.userId;
+
+        const doctor = await Doctor.findOne({
+            where: {user_id: userId}
+        })
+
+        if(!doctor){
+            return res.send("No eres un doctor");
+        }
+
+        const appointments = Appointment.findAll({
+            where: {doctor_id: doctor.id}
+        })
+
+        return res.json(appointments)
     } catch (error) {
         return res.status(500).send(error.message)
     }
