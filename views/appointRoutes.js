@@ -6,5 +6,6 @@ const router = require("express").Router()
 router.post('/appointment', verifyToken ,appointmentController.newAppointment)
 router.put("/appointment", verifyToken,appointmentController.updateAppointment)
 router.get("/appointment", verifyToken, appointmentController.appointmens)
+router.delete("/appointment/:id", verifyToken, appointmentController.deleteAppointmentById)
 
 module.exports = router;

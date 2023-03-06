@@ -57,4 +57,18 @@ appointmentController.appointmens = async(req, res)=>{
     }
 }
 
+// Borrar una cita de Usuario
+
+appointmentController.deleteAppointmentById = async(req, res)=>{
+    try {
+        const appointmentId = req.params.id;
+
+        const deleteAppointment = await Appointment.destroy({where: {id: appointmentId}})
+
+        return res.json(deleteAppointment);
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 module.exports = appointmentController;
