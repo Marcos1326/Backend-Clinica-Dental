@@ -61,7 +61,7 @@ appointmentController.appointmens = async(req, res)=>{
             return res.send('No eres un paciente');
         }
 
-        const appointment = Appointment.finAll({
+        const appointment = Appointment.findAll({
             where: {
                 patient_id: patient.id
             }
