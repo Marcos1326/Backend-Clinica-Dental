@@ -1,7 +1,7 @@
 const appointmentController = {};
 const { Appointment, Doctor, Patient } = require("../models");
 
-//Crear citas de Usuario
+//Crear citas de Paciente
 
 appointmentController.newAppointment = async (req, res) => {
   try {
@@ -14,7 +14,7 @@ appointmentController.newAppointment = async (req, res) => {
     });
 
     if (!patient) {
-      return res.send("No eres un paciente");
+      return res.send("You are not a patient");
     }
 
     const { hour, date, doctor_id } = req.body;
@@ -31,7 +31,7 @@ appointmentController.newAppointment = async (req, res) => {
   }
 };
 
-//Modificar citas de Usuario
+//Modificar citas de Paciente
 
 appointmentController.updateAppointment = async (req, res) => {
   try {
@@ -44,7 +44,7 @@ appointmentController.updateAppointment = async (req, res) => {
     });
 
     if (!patient) {
-      return res.send("No eres un paciente");
+      return res.send("You are not a patient");
     }
 
     const { hour, date, app_id } = req.body;
@@ -54,7 +54,7 @@ appointmentController.updateAppointment = async (req, res) => {
     })
 
     if(!appointment){
-        return res.send("No tienes esa cita")
+        return res.send("There is no such appointment")
     }
 
     const updateAppointments = await Appointment.update(
@@ -88,7 +88,7 @@ appointmentController.appointmens = async (req, res) => {
     });
 
     if (!patient) {
-      return res.send("No eres un paciente");
+      return res.send("You are not a patient");
     }
 
     const appointment = await Appointment.findAll({
@@ -103,15 +103,32 @@ appointmentController.appointmens = async (req, res) => {
   }
 };
 
-// Borrar una cita de Usuario
+// Borrar una cita de Paciente
 
 appointmentController.deleteAppointmentById = async (req, res) => {
   try {
+
+    const userId = req.userId;
+
+    const patientAppointment = await Patient.findOne({
+      where: {
+        user_id: userId,
+      },
+    });
+
+    if (!patientAppointment) {
+      return res.send("You are not a patient");
+    }
+
     const appointmentId = req.params.id;
 
     const deleteAppointment = await Appointment.destroy({
-      where: { id: appointmentId },
+      where: { patient_id: patientAppointment.id, id: appointmentId },
     });
+
+    if(!deleteAppointment){
+      return res.send("There is no such appointment")
+    }
 
     return res.json(deleteAppointment);
   } catch (error) {
@@ -130,7 +147,7 @@ appointmentController.getAppointmentDoctor = async (req, res) => {
     });
 
     if (!doctor) {
-      return res.send("No eres un doctor");
+      return res.send("You are not a doctor");
     }
 
     const appointments = Appointment.findAll({
