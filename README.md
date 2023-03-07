@@ -8,13 +8,6 @@
     <li><a href="#diagrama-bd">Diagrama</a></li>
     <li><a href="#instalación-en-local">Instalación</a></li>
     <li><a href="#endpoints">Endpoints</a></li>
-    <li><a href="#futuras-funcionalidades">Futuras funcionalidades</a></li>
-    <li><a href="#contribuciones">Contribuciones</a></li>
-    <li><a href="#licencia">Licencia</a></li>
-    <li><a href="#webgrafia">Webgrafia</a></li>
-    <li><a href="#desarrollo">Desarrollo</a></li>
-    <li><a href="#agradecimientos">Agradecimientos</a></li>
-    <li><a href="#contacto">Contacto</a></li>
   </ol>
 </details>
 
@@ -26,20 +19,20 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 
 
 ## Diagrama BD
-!['imagen-db']()
+<img src="./img/bbdd.png" width=900px></img>
 
 ## Instalación en local
 1. Clonar el repositorio
-2. ` $ npm install `
+2. ` $ npm install ` para instalar las dependencias.
 3. Conectamos nuestro repositorio con la base de datos en el config.json
-4. ``` $ Ejecutamos las migraciones con "npx sequelize-cli db:migrate" ``` 
-5. ``` $ Ejecutamos los seeders con "npx sequelize-cli db:seed:all" ``` 
-6. ``` $ npm run dev ``` 
-7. ...
+4. Creamos la base de datos con ``` $ npx sequelize-cli db:create```
+5. Ejecutamos las migraciones con: ``` $ npx sequelize-cli db:migrate ``` 
+6. Ejecutamos los seeders con: ``` $ npx sequelize-cli db:seed:all ``` 
+7. Para iniciar el servidor:  ``` $ npm run dev ```
 
 ## Endpoints
-<details>
-<summary>Endpoints</summary>
+<!-- <details> -->
+<!-- <summary>Endpoints</summary> -->
 
 - AUTH
     - REGISTER
@@ -70,7 +63,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
     - New Appointment
 
             POST http://localhost:4000/appointment  
-        body:
+            body:
         ``` js
             {
                 "hour": "20:00",
@@ -92,6 +85,68 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
     - Profile
 
             POST http://localhost:4000/profile 
+
+   - Update Profile
+
+            UP http://localhost:4000/admin-deleterol
+        body:
+        ``` js
+            {
+                "name":"david",
+                "surname":"perez",
+                "phone":"333444111",
+                "email":"david@david.com",
+                "password":"banana"
+            }
+        ```
+
+    - Get Users
+
+            GET http://localhost:4000/adminuser
+
+    - Get Appointment
+
+            GET http://localhost:4000/adminappointments
+
+   - Create Role
+
+            POST http://localhost:4000//admin-createrol
+        body:
+        ``` js
+            {
+                "name": "paciente"
+            }
+        ```
+
+   - Update Role
+
+            POST http://localhost:4000/admin-updaterol
+        body:
+        ``` js
+             {
+                "name": "paciente"
+            }
+        ```
+
+   - Delete Appointment
+
+            UP http://localhost:4000/admin-deleterol
+        body:
+        ``` js
+            {
+                "name": "paciente"
+            }
+        ```
+
+   - Get all Role
+
+            UP http://localhost:4000/admin-deleterol
+        body:
+        ``` js
+            {
+                "name": "paciente"
+            }
+        ```
 
 
 </details>

@@ -26,7 +26,7 @@ adminController.getAppointments = async(req, res)=>{
 }
 
 
-adminController.createRol = async (req,res) => {
+adminController.createRole = async (req,res) => {
     try {
         // const name = req.body.name
         const { name } = req.body
@@ -43,7 +43,7 @@ adminController.createRol = async (req,res) => {
     }
 }
 
-adminController.updateRol = async (req,res) => {
+adminController.updateRole = async (req,res) => {
     try {
         const { name } = req.body
 
@@ -59,7 +59,7 @@ adminController.updateRol = async (req,res) => {
     }
 }
 
-adminController.deleteRol = async (req,res) => {
+adminController.deleteRole = async (req,res) => {
     try {
         const { name } = req.body
 
@@ -76,7 +76,7 @@ adminController.deleteRol = async (req,res) => {
 }
 
 
-adminController.getAllRol = async (req,res) => {
+adminController.getAllRole = async (req,res) => {
     try {
         const { name } = req.body
 
