@@ -67,7 +67,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
-            - New Appointment
+    - New Appointment
 
             POST http://localhost:4000/appointment  
         body:
@@ -78,7 +78,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
-            - Update Appointment
+    - Update Appointment
 
             UP http://localhost:4000/appointment
         body:
@@ -89,7 +89,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
-            - Profile
+    - Profile
 
             POST http://localhost:4000/profile 
 

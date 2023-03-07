@@ -1,5 +1,5 @@
 const adminController = {}
-const {User, Appointment} = require("../models")
+const {User, Appointment, Role} = require("../models")
 
 //Ver todos los usuarios Admin
 
@@ -25,5 +25,22 @@ adminController.getAppointments = async(req, res)=>{
     }
 }
 
+
+adminController.createRol = async (req,res) => {
+    try {
+        // const name = req.body.name
+        const { name } = req.body
+
+        const newRol = await Role.create(
+            {
+                name: name,
+            }
+        )
+
+        return res.json(newRol)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
 
 module.exports = adminController;
