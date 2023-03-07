@@ -31,8 +31,8 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 7. Para iniciar el servidor:  ``` $ npm run dev ```
 
 ## Endpoints
-<!-- <details> -->
-<!-- <summary>Endpoints</summary> -->
+<details> -->
+<summary>Endpoints</summary>
 
 - AUTH
     - REGISTER
