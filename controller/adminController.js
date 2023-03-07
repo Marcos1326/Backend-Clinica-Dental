@@ -43,4 +43,54 @@ adminController.createRol = async (req,res) => {
     }
 }
 
+adminController.updateRol = async (req,res) => {
+    try {
+        const { name } = req.body
+
+        const newRol = await Role.update(
+            {
+                name: name,
+            }
+        )
+
+        return res.json(newRol)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+adminController.deleteRol = async (req,res) => {
+    try {
+        const { name } = req.body
+
+        const newRol = await Role.destroy(
+            {
+                name: name,
+            }
+        )
+
+        return res.json(newRol)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+
+adminController.getAllRol = async (req,res) => {
+    try {
+        const { name } = req.body
+
+        const newRol = await Role.findAll(
+            {
+                name: name,
+            }
+        )
+
+        return res.json(newRol)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+
 module.exports = adminController;
