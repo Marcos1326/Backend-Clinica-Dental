@@ -76,21 +76,5 @@ adminController.deleteRol = async (req,res) => {
 }
 
 
-adminController.getAllRol = async (req,res) => {
-    try {
-        const { name } = req.body
-
-        const newRol = await Role.findAll(
-            {
-                name: name,
-            }
-        )
-
-        return res.json(newRol)
-    } catch (error) {
-        return res.status(500).json(error)
-    }
-}
-
 
 module.exports = adminController;
