@@ -1,5 +1,5 @@
 const appointmentController = {}
-const {Appointment, Doctor} = require("../models")
+const {Appointment, Doctor, Patient} = require("../models")
 
 //Crear citas de Usuario
 
@@ -48,9 +48,26 @@ appointmentController.updateAppointment = async (req, res) => {
 
 appointmentController.appointmens = async(req, res)=>{
     try {
-        const appointmens = await Appointment.findAll()
 
-        return res.json(appointmens)
+        const userId = req.userId;
+
+        const patient = await Patient.findOne({
+            where: {
+                user_id: userId
+            }
+        })
+
+        if(!patient) {
+            return res.send('No eres un paciente');
+        }
+
+        const appointment = Appointment.finAll({
+            where: {
+                patient_id: patient.id
+            }
+        })
+
+        return res.json(appointment)
     } catch (error) {
         return res.status(500).send(error.message)
     }
@@ -69,6 +86,8 @@ appointmentController.deleteAppointmentById = async(req, res)=>{
         return res.status(500).send(error.message)
     }
 }
+
+//Ver citas del Doctor
 
 appointmentController.getAppointmentDoctor = async(req, res)=>{
     try {
