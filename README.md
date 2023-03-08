@@ -103,10 +103,11 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
+     
      - Update Appointment
 
             PUT http://localhost:4000/appointment
-        body:
+            body:
         ``` js
             {
                 "hour": "10:00",
@@ -116,30 +117,30 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
         ```
 
        
-     - Get Appointment
+    - Get Appointment
 
             GET http://localhost:4000/appointment
 
 
     
-    - Delete Appointment by ID
+   - Delete Appointment by ID
 
             Delete http://localhost:4000/appointment/id
     
     
-    - Get Appointment Doctor
+   - Get Appointment Doctor
 
             GET http://localhost:4000/appointmentDr
     
     
     
-    - Get Users Admin
+   - Get Users Admin
 
             GET http://localhost:4000/adminuser
             
             
             
-            - Get Appointment Admin
+   - Get Appointment Admin
 
             GET http://localhost:4000/adminappointments
 
