@@ -16,7 +16,18 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 
 ## Tecnologias utilizadas
 
-
+<a href="https://www.mongodb.com/">
+    <img src= "https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white"/>
+</a>
+<a href="https://www.expressjs.com/">
+    <img src= "https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB"/>
+</a>
+<a href="https://nodejs.org/es/">
+    <img src= "https://img.shields.io/badge/node.js-026E00?style=for-the-badge&logo=node.js&logoColor=white"/>
+</a>
+<a href="https://developer.mozilla.org/es/docs/Web/JavaScript">
+    <img src= "https://img.shields.io/badge/javascript-EFD81D?style=for-the-badge&logo=javascript&logoColor=black"/>
+</a>
 
 ## Diagrama BD
 <img src="./img/bbdd.png" width=900px></img>
@@ -60,35 +71,14 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
-    - New Appointment
+     - View Profile
 
-            POST http://localhost:4000/appointment  
-            body:
-        ``` js
-            {
-                "hour": "20:00",
-                "date": "12/1/2012"
-            }
-        ```
+            GET http://localhost:4000/profile 
+    
+      
+      - Update Profile
 
-    - Update Appointment
-
-            UP http://localhost:4000/appointment
-        body:
-        ``` js
-            {
-                "hour": "10:00",
-                "date": "13/2/2023"
-            }
-        ```
-
-    - Profile
-
-            POST http://localhost:4000/profile 
-
-   - Update Profile
-
-            UP http://localhost:4000/admin-deleterol
+            PUT http://localhost:4000/admin-deleterol
         body:
         ``` js
             {
@@ -99,14 +89,60 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
                 "password":"banana"
             }
         ```
+    
+    
+     - New Appointment
 
-    - Get Users
+            POST http://localhost:4000/appointment  
+            body:
+        ``` js
+            {
+                "doctor_id": 1,
+                "date": "12/1/2012",
+                "hour": "20:00"
+            }
+        ```
+
+     - Update Appointment
+
+            PUT http://localhost:4000/appointment
+        body:
+        ``` js
+            {
+                "hour": "10:00",
+                "date": "13/2/2023",
+                "app_id": 3
+            }
+        ```
+
+       
+     - Get Appointment
+
+            GET http://localhost:4000/appointment
+
+
+    
+    - Delete Appointment by ID
+
+            Delete http://localhost:4000/appointment/id
+    
+    
+    - Get Appointment Doctor
+
+            GET http://localhost:4000/appointmentDr
+    
+    
+    
+    - Get Users Admin
 
             GET http://localhost:4000/adminuser
-
-    - Get Appointment
+            
+            
+            
+            - Get Appointment Admin
 
             GET http://localhost:4000/adminappointments
+
 
    - Create Role
 
@@ -128,7 +164,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
             }
         ```
 
-   - Delete Appointment
+   - Delete Role
 
             UP http://localhost:4000/admin-deleterol
         body:
