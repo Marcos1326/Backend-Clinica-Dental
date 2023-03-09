@@ -88,7 +88,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 
    - Update Profile
 
-            UP http://localhost:4000/admin-deleterol
+            UP http://localhost:4000/updateprofile
         body:
         ``` js
             {
@@ -141,12 +141,6 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
    - Get all Role
 
             UP http://localhost:4000/admin-deleterol
-        body:
-        ``` js
-            {
-                "name": "paciente"
-            }
-        ```
 
 
 </details>
