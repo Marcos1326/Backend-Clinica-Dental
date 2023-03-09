@@ -150,10 +150,9 @@ appointmentController.getAppointmentDoctor = async (req, res) => {
       return res.send("You are not a doctor");
     }
 
-    const appointments = Appointment.findAll({
-      where: { doctor_id: doctor.id },
+    const appointments = await Appointment.findAll({
+      where: { doctor_id: doctor.id }
     });
-
     return res.json(appointments);
   } catch (error) {
     return res.status(500).send(error.message);
