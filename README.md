@@ -134,6 +134,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
         body:
         ``` js
             {
+                "id": 4,
                 "name": "paciente"
             }
         ```

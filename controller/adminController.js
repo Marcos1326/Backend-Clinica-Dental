@@ -61,10 +61,11 @@ adminController.updateRole = async (req,res) => {
 
 adminController.deleteRole = async (req,res) => {
     try {
-        const { name } = req.body
+        const { id, name } = req.body
 
         const newRol = await Role.destroy(
             {
+                id: id,
                 name: name,
             }
         )
@@ -80,12 +81,7 @@ adminController.getAllRole = async (req,res) => {
     try {
         const { name } = req.body
 
-        const newRol = await Role.findAll(
-            {
-                name: name,
-            }
-        )
-
+        const newRol = await Role.findAll()
         return res.json(newRol)
     } catch (error) {
         return res.status(500).json(error)
