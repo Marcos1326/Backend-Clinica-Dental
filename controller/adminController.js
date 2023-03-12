@@ -1,5 +1,5 @@
 const adminController = {}
-const {User, Appointment, Role} = require("../models")
+const {User, Appointment, Role, specialty} = require("../models")
 
 //Ver todos los usuarios Admin
 
@@ -45,11 +45,14 @@ adminController.createRole = async (req,res) => {
 
 adminController.updateRole = async (req,res) => {
     try {
-        const { name } = req.body
+        const { id, name } = req.body
 
         const newRol = await Role.update(
             {
                 name: name,
+            },
+            {
+                where: {id:id}
             }
         )
 
@@ -61,16 +64,18 @@ adminController.updateRole = async (req,res) => {
 
 adminController.deleteRole = async (req,res) => {
     try {
-        const { id, name } = req.body
+        const { id } = req.params
 
         const newRol = await Role.destroy(
             {
-                id: id,
-                name: name,
+                where: {id: id}
             }
         )
+        if(!newRol){
+            return res.send('No hay registo')
+        }
 
-        return res.json(newRol)
+        return res.send('registro eliminado')
     } catch (error) {
         return res.status(500).json(error)
     }
@@ -83,6 +88,75 @@ adminController.getAllRole = async (req,res) => {
 
         const newRol = await Role.findAll()
         return res.json(newRol)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+//Especialidadades
+
+adminController.createSpecialty = async (req,res) => {
+    try {
+        // const name = req.body.name
+        const { name } = req.body
+
+        const newSpecialty = await specialty.create(
+            {
+                name: name,
+            }
+        )
+
+        return res.json(newSpecialty)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+adminController.updateSpecialty = async (req,res) => {
+    try {
+        const { id, name } = req.body
+
+        const newSpecialty = await specialty.update(
+            {
+                name: name,
+            },
+            {
+                where: {id:id}
+            }
+        )
+
+        return res.json(newSpecialty)
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+adminController.deleteSpecialty = async (req,res) => {
+    try {
+        const { id } = req.params
+
+        const newSpecialty = await specialty.destroy(
+            {
+                where: {id: id}
+            }
+        )
+        if(!newSpecialty){
+            return res.send('No existe esa especialidad')
+        }
+
+        return res.send('Especialidad eliminada')
+    } catch (error) {
+        return res.status(500).json(error)
+    }
+}
+
+
+adminController.getAllSpecialty = async (req,res) => {
+    try {
+        const { name } = req.body
+
+        const newSpecialty = await specialty.findAll()
+        return res.json(newSpecialty)
     } catch (error) {
         return res.status(500).json(error)
     }
