@@ -16,7 +16,7 @@ module.exports = {
           key: "id"
         }
       },
-      specialtys_id: {
+      Specialty_id: {
         type: Sequelize.INTEGER,
         references:{
           model: "specialty",
