@@ -6,6 +6,7 @@ const router = require("express").Router()
 
 router.get("/adminuser",verifyToken, isAdmin,adminController.getUsers)
 router.get("/adminappointments", verifyToken, isAdmin, adminController.getAppointments)
+router.delete("/adminDeleteUser/:id", verifyToken, isAdmin, adminController.delUser)
 
 router.post("/admin-createrole", verifyToken, isAdmin, adminController.createRole)
 router.put("/admin-updaterole", verifyToken, isAdmin, adminController.updateRole)
