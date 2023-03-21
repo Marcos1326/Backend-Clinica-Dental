@@ -63,7 +63,11 @@ authControllers.login =async (req,res) => {
             "secreto",
             { expiresIn: "2h" }
         );
-        return res.json(token);
+        return res.json({
+            success: true,
+            message: "Token created",
+            data: token
+        });
 
     } catch (error) {
         return res.status(500).send(error.message);
