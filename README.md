@@ -78,28 +78,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
       
       - Update Profile
 
-<<<<<<< HEAD
-    - Update Appointment
-
-            UP http://localhost:4000/appointment
-        body:
-        ``` js
-            {
-                "hour": "10:00",
-                "date": "13/2/2023"
-            }
-        ```
-
-    - Profile
-
-            POST http://localhost:4000/profile 
-
-   - Update Profile
-
-            UP http://localhost:4000/updateprofile
-=======
-            PUT http://localhost:4000/admin-deleterol
->>>>>>> 1d76454e820d6cd3411cfee9f57143f3e3562408
+            PUT http://localhost:4000/admin-updaterol
         body:
         ``` js
             {
