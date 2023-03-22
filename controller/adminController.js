@@ -13,6 +13,34 @@ adminController.getUsers = async(req, res)=> {
     }
 }
 
+adminController.delUser = async (req,res) => {
+    try {
+        
+        const { id } = req.params
+
+        const userFound = await User.findOne({
+            where: {id: id}
+        })
+
+        console.log(userFound)
+
+        if(userFound.roles_id === 1){
+            return res.send("No puedes eliminar un administrador")
+        }
+
+        const delUser = await User.destroy(
+            {
+                where: {id:id}
+            }
+        )
+
+        return res.send("usuario eliminado")
+
+    } catch (error) {
+        return res.status(500).send(error.message)
+    }
+}
+
 //Ver todas las citas Admin
 
 adminController.getAppointments = async(req, res)=>{
