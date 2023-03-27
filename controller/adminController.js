@@ -125,7 +125,6 @@ adminController.getAllRole = async (req,res) => {
 
 adminController.createSpecialty = async (req,res) => {
     try {
-        // const name = req.body.name
         const { name } = req.body
 
         const newSpecialty = await specialty.create(

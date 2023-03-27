@@ -28,7 +28,10 @@ authControllers.newUser = async (req, res) => {
             
             )
 
-        return res.json(users);
+        return res.json({
+            success: true,
+            message: "Bienvenido"
+        });
     } catch (error) {
         return res.status(500).send(error);
     }
