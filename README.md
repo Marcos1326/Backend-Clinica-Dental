@@ -178,7 +178,7 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 
    - Get all Role
 
-            UP http://localhost:4000/admin-deleterol
+            UP http://localhost:4000/admin-getallrole
 
 
 </details>
