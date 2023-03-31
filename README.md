@@ -182,3 +182,29 @@ Este proyecto requería una API funcional, para una clinica dental, conectada a 
 
 
 </details>
+
+## License
+Este proyecto ha sido creado bajo una Licencia MIT. Para obtener más información sobre los detalles, vaya a LICENSE.md.
+
+## Agradecimientos:
+
+Quiero agradecer a mis mentores de GeekHub por todo el apoyo que nos han brindado todos los días:
+- **Dani**  
+<a href="https://github.com/Dave86dev" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+
+- **Jose**  
+<a href="https://github.com/JoseMarin" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=white" target="_blank"></a> 
+
+- **David**  
+<a href="https://www.github.com/userGithub/" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=red" target="_blank"></a>
+
+- ***Mara***  
+<a href="https://github.com/MaraScampini" target="_blank"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a> 
+
+## Contacto
+
+No dude en ponerse en contacto conmigo en cualquier momento, para ayudarlo con su proyecto con React o para darme su opinión.
+
+<a href = "https://github.com/Marcos1326"><img src="https://img.shields.io/badge/github-24292F?style=for-the-badge&logo=github&logoColor=green" target="_blank"></a>
+<a href="https://www.linkedin.com/in/marcosgarridofsd/" target="_blank"><img src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a> 
+</p>
